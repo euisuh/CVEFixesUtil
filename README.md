@@ -27,15 +27,23 @@ Below are tables containing CWE ID, name, number of pairs, and rank in the MITRE
 ### Python
 | CWE ID | Name                         | Number of Pairs | Rank in MITRE |
 |--------|------------------------------|-----------------|---------------|
-| CWE-918| Server-Side Request Forgery (SSRF) | 148       | 19            |
-| CWE-352|  Cross-Site Request Forgery (CSRF) | 121       | 9             |
-| CWE-79 | Cross-Site Scripting         | 73              | 2             |
-| CWE-20 | Improper Input Validation    | 66              | 6             |
-| CWE-22 | Path Traversal               | 61              | 8             |
+| CWE-918| Server-Side Request Forgery (SSRF) | 146       | 19            |
+| CWE-352| Cross-Site Request Forgery (CSRF)  | 121       | 9             |
+| CWE-79 | Cross-Site Scripting         | 63              | 2             |
+| CWE-20 | Improper Input Validation    | 61              | 6             |
+| CWE-22 | Path Traversal               | 51              | 8             |
 
 ### C
 | CWE ID | Name                         | Number of Pairs | Rank in MITRE |
 |--------|------------------------------|-----------------|---------------|
+| CWE-125| Out-of-bounds Read           | 583             | 7             |
+| CWE-119| Buffer Overflow              | 493             | 17            |
+| CWE-787| Out-of-bounds Write          | 303             | 1             |
+| CWE-20 | Improper Input Validation    | 288             | 6             |
+| CWE-476| NULL Pointer Dereference     | 269             | 12            |
+| CWE-416| Use After Free               | 243             | 4             |
+| CWE-190|Integer Overflow or Wraparound| 211             | 14            |
+| CWE-362| Race Condition               | 177             | 21            |
 
 ### C++
 | CWE ID | Name                         | Number of Pairs | Rank in MITRE |
@@ -44,12 +52,27 @@ Below are tables containing CWE ID, name, number of pairs, and rank in the MITRE
 ### Java
 | CWE ID | Name                         | Number of Pairs | Rank in MITRE |
 |--------|------------------------------|-----------------|---------------|
+| CWE-287| Improper Authentication      | 126             | 13            |
+| CWE-22 | Path Traversal               | 101             | 8             |
+| CWE-862| Missing Authorization        | 62              | 11            |
+| CWE-918| Server-Side Request Forgery (SSRF)| 48         | 19            |
+| CWE-79 | Cross-site Scripting         | 40              | 2             |
 
 ### Ruby
 | CWE ID | Name                         | Number of Pairs | Rank in MITRE |
 |--------|------------------------------|-----------------|---------------|
+| CWE-89 | SQL Injection                | 203             | 3             |
+| CWE-79 | Cross-site Scripting         | 65              | 2             |
+| CWE-20 | Improper Input Validation    | 54              | 6             |
+| CWE-863| Incorrect Authorization      | 30              | 24            |
 
 ### Go
 | CWE ID | Name                         | Number of Pairs | Rank in MITRE |
 |--------|------------------------------|-----------------|---------------|
+| CWE-863| Incorrect Authorization      | 36              | 24            |
+| CWE-190| Integer Overflow or Wraparound| 19             | 14            |
+| CWE-78 | OS Command Injection         | 13              | 5             |
+| CWE-918| Server-Side Request Forgery (SSRF)| 12         | 19            |
+| CWE-22 | Path Traversal               | 11              | 8             |
+| CWE-20 | Improper Input Validation    | 10              | 6             |
 
