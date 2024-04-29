@@ -76,3 +76,6 @@ Below are tables containing CWE ID, name, number of pairs, and rank in the MITRE
 | CWE-22 | Path Traversal               | 11              | 8             |
 | CWE-20 | Improper Input Validation    | 10              | 6             |
 
+## Dataset
+
+The dataset is published and available for download [here](https://huggingface.co/datasets/euisuh15/cveFixes1).
