@@ -1,0 +1,26 @@
+rank, id, name
+1, 787, Out-of-bounds Write
+2, 79, Cross-site Scripting
+3, 89, SQL Injection
+4, 416, Use After Free
+5, 78, OS Command Injection
+6, 20, Improper Input Validation
+7, 125, Out-of-bounds Read
+8, 22, Path Traversal
+9, 352, CSRF
+10, 434, Unrestricted Upload of File
+11, 862, Missing Authorization
+12, 476, NULL Pointer Dereference
+13, 287, Improper Authentication
+14, 190, Integer Overflow or Wraparound
+15, 502, Deserialization of Untrusted Data
+16, 77, Command Injection
+17, 119, Memory Buffer Boundary Issue
+18, 798, Use of Hard-coded Credentials
+19, 918, SSRF
+20, 306, Missing Authentication
+21, 362, Race Condition
+22, 269, Improper Privilege Management
+23, 94, Code Injection
+24, 863, Incorrect Authorization
+25, 276, Incorrect Default Permissions

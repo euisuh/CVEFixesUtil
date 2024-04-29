@@ -1,3 +1,4 @@
 pandas
 matplotlib
 db-sqlite3
+datasets
