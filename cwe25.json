@@ -1,0 +1,152 @@
+[
+  {
+    "rank": "1",
+    "id": "787",
+    "name": "Out-of-bounds Write",
+    "description": "The product writes data past the end, or before the beginning, of the intended buffer."
+  },
+  {
+    "rank": "2",
+    "id": "79",
+    "name": "Cross-site Scripting",
+    "description": "The product does not neutralize or incorrectly neutralizes user-controllable input before it is placed in output that is used as a web page that is served to other users."
+  },
+  {
+    "rank": "3",
+    "id": "89",
+    "name": "SQL Injection",
+    "description": "The product constructs all or part of an SQL command using externally-influenced input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could modify the intended SQL command when it is sent to a downstream component."
+  },
+  {
+    "rank": "4",
+    "id": "416",
+    "name": "Use After Free",
+    "description": "Referencing memory after it has been freed can cause a program to crash, use unexpected values, or execute code."
+  },
+  {
+    "rank": "5",
+    "id": "78",
+    "name": "OS Command Injection",
+    "description": "The product constructs all or part of an OS command using externally-influenced input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could modify the intended OS command when it is sent to a downstream component."
+  },
+  {
+    "rank": "6",
+    "id": "20",
+    "name": "Improper Input Validation",
+    "description": "The product receives input or data, but it does not validate or incorrectly validates that the input has the properties that are required to process the data safely and correctly."
+  },
+  {
+    "rank": "7",
+    "id": "125",
+    "name": "Out-of-bounds Read",
+    "description": "The product reads data past the end, or before the beginning, of the intended buffer."
+  },
+  {
+    "rank": "8",
+    "id": "22",
+    "name": "Path Traversal",
+    "description": "The product uses external input to construct a pathname that is intended to identify a file or directory that is located underneath a restricted parent directory, but the product does not properly neutralize special elements within the pathname that can cause the pathname to resolve to a location that is outside of the restricted directory."
+  },
+  {
+    "rank": "9",
+    "id": "352",
+    "name": "CSRF",
+    "description": "The web application does not, or can not, sufficiently verify whether a well-formed, valid, consistent request was intentionally provided by the user who submitted the request."
+  },
+  {
+    "rank": "10",
+    "id": "434",
+    "name": "Unrestricted Upload of File",
+    "description": "The product allows the attacker to upload or transfer files of dangerous types that can be automatically processed within the product's environment."
+  },
+  {
+    "rank": "11",
+    "id": "862",
+    "name": "Missing Authorization",
+    "description": "The product does not perform an authorization check when an actor attempts to access a resource or perform an action."
+  },
+  {
+    "rank": "12",
+    "id": "476",
+    "name": "NULL Pointer Dereference",
+    "description": "A NULL pointer dereference occurs when the application dereferences a pointer that it expects to be valid, but is NULL, typically causing a crash or exit."
+  },
+  {
+    "rank": "13",
+    "id": "287",
+    "name": "Improper Authentication",
+    "description": "When an actor claims to have a given identity, the product does not prove or insufficiently proves that the claim is correct."
+  },
+  {
+    "rank": "14",
+    "id": "190",
+    "name": "Integer Overflow or Wraparound",
+    "description": "The product performs a calculation that can produce an integer overflow or wraparound, when the logic assumes that the resulting value will always be larger than the original value. This can introduce other weaknesses when the calculation is used for resource management or execution control."
+  },
+  {
+    "rank": "15",
+    "id": "502",
+    "name": "Deserialization of Untrusted Data",
+    "description": "The product deserializes untrusted data without sufficiently verifying that the resulting data will be valid."
+  },
+  {
+    "rank": "16",
+    "id": "77",
+    "name": "Command Injection",
+    "description": "The product constructs all or part of a command using externally-influenced input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could modify the intended command when it is sent to a downstream component."
+  },
+  {
+    "rank": "17",
+    "id": "119",
+    "name": "Memory Buffer Boundary Issue",
+    "description": "The product performs operations on a memory buffer, but it can read from or write to a memory location that is outside of the intended boundary of the buffer."
+  },
+  {
+    "rank": "18",
+    "id": "798",
+    "name": "Use of Hard-coded Credentials",
+    "description": "The product contains hard-coded credentials, such as a password or cryptographic key, which it uses for its own inbound authentication, outbound communication to external components, or encryption of internal data."
+  },
+  {
+    "rank": "19",
+    "id": "918",
+    "name": "SSRF",
+    "description": "The web server receives a URL or similar request from an upstream component and retrieves the contents of this URL, but it does not sufficiently ensure that the request is being sent to the expected destination."
+  },
+  {
+    "rank": "20",
+    "id": "306",
+    "name": "Missing Authentication",
+    "description": "The product does not perform any authentication for functionality that requires a provable user identity or consumes a significant amount of resources."
+  },
+  {
+    "rank": "21",
+    "id": "362",
+    "name": "Race Condition",
+    "description": "The product contains a code sequence that can run concurrently with other code, and the code sequence requires temporary, exclusive access to a shared resource, but a timing window exists in which the shared resource can be modified by another code sequence that is operating concurrently."
+  },
+  {
+    "rank": "22",
+    "id": "269",
+    "name": "Improper Privilege Management",
+    "description": "The product does not properly assign, modify, track, or check privileges for an actor, creating an unintended sphere of control for that actor."
+  },
+  {
+    "rank": "23",
+    "id": "94",
+    "name": "Code Injection",
+    "description": "The product constructs all or part of a code segment using externally-influenced input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could modify the syntax or behavior of the intended code segment."
+  },
+  {
+    "rank": "24",
+    "id": "863",
+    "name": "Incorrect Authorization",
+    "description": "The product performs an authorization check when an actor attempts to access a resource or perform an action, but it does not correctly perform the check. This allows attackers to bypass intended access restrictions."
+  },
+  {
+    "rank": "25",
+    "id": "276",
+    "name": "Incorrect Default Permissions",
+    "description": "During installation, installed file permissions are set to allow anyone to modify those files."
+  }
+]
