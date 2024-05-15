@@ -41,7 +41,7 @@ Please answer yes or no whether CWE-{cwe_id} is in the following input.
 '''
 
 
-def prompt21(cwe_id, cwe_name, cwe_desc, code):
+def prompt21(cwe_id, code):
     return f'''Below is an instruction that describes a task, paired with an input that provides further context. Write a response that appropriately completes the request.
 
 ### Instruction:
