@@ -18,7 +18,7 @@ Answer:
 def promptS2(code, cwe_name):
     return f'''
 Code:
-{code}
+{code} process_name(data['name']
 
 Question:
 Does this code contain instances of the security vulnerability known as {cwe_name}?
@@ -42,7 +42,7 @@ Answer:
 # Standard Prompt 4 (ZS) (RO)
 # sys = "You are a code security expert who analyzes the given code for the security vulnerability known as {}.".format(cwe_name)
 # no question here, but cwe_name is being passed into the sys prompt
-def promptS4(code):
+def promptS4(code, cwe_name):
     return f'''
 Code:
 {code}
