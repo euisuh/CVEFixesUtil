@@ -5,7 +5,7 @@ import pandas as pd
 
 import json
 
-json_file_path = 'C:/Users/user/Documents/GitHub/original/CVEFixesUtil/cwe25.json'
+json_file_path = '../cwe25.json'
 
 with open(json_file_path, 'r') as file:
     cwe25 = json.load(file)
