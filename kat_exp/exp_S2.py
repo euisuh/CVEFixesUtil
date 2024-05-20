@@ -4,7 +4,7 @@ from prompts_kat import *
 import pandas as pd
 
 import json
-json_file_path = 'C:/Users/user/Documents/GitHub/original/CVEFixesUtil/cwe25.json'
+json_file_path = '../cwe25.json'
 
 df = pd.read_csv('vulC7_test.csv')
 
