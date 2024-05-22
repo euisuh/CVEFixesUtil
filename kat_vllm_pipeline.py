@@ -7,8 +7,6 @@ from utils import *
 from prompts_kat import *
 import pandas as pd
 
-
-
 def expS1(df, cwe_map, model):
     prompts_before = [promptS1(df.func_before.iloc[i], cwe_map.get(df['exp_cwe_id'].iloc[i][4:])['name']) for i in range(df.shape[0])]
     prompts_after = [promptS1(df.func_after.iloc[i], cwe_map.get(df['exp_cwe_id'].iloc[i][4:])['name']) for i in range(df.shape[0])]
@@ -21,10 +19,13 @@ def expS1(df, cwe_map, model):
     res_after = []
 
     n = len(res10)
-    df['res_before'] = res10[:n//2]
-    df['res_after'] = res10[n//2:]
+    res_df = pd.DataFrame({
+        'id': range(n)
+        'res_before': res10[:n//2],
+        'res_after': res10[n//2:]
+    })
 
-    df.to_csv(f'kat_res/res_S1_{model[0]}.csv', index=False)  
+    res_df.to_csv(f'kat_res/res_S1_{model[0]}.csv', index=False)  
 
 def expS2(df, cwe_map, model):
     prompts_before = [promptS2(df.func_before.iloc[i], cwe_map.get(df['exp_cwe_id'].iloc[i][4:])['name']) for i in range(df.shape[0])]
@@ -40,10 +41,13 @@ def expS2(df, cwe_map, model):
     res_after = []
 
     n = len(res10)
-    df['res_before'] = res10[:n//2]
-    df['res_after'] = res10[n//2:]
-
-    df.to_csv(f'kat_res/res_S2_{model[0]}.csv', index=False)  
+    res_df = pd.DataFrame({
+        'id': range(n)
+        'res_before': res10[:n//2],
+        'res_after': res10[n//2:]
+    })
+    
+    res_df.to_csv(f'kat_res/res_S2_{model[0]}.csv', index=False)  
 
 def expS3(df, cwe_map, model):
     prompts_before = [promptS3(df.func_before.iloc[i], cwe_map.get(df['exp_cwe_id'].iloc[i][4:])['name']) for i in range(df.shape[0])]
@@ -59,11 +63,14 @@ def expS3(df, cwe_map, model):
     res_after = []
 
     n = len(res10)
-    df['res_before'] = res10[:n//2]
-    df['res_after'] = res10[n//2:]
+    n = len(res10)
+    res_df = pd.DataFrame({
+        'id': range(n)
+        'res_before': res10[:n//2],
+        'res_after': res10[n//2:]
+    })
 
-    df.to_csv(f'kat_res/res_S3_{model[0]}.csv', index=False)  
-
+    res_df.to_csv(f'kat_res/res_S3_{model[0]}.csv', index=False)  
 
 
 def expR1(df, cwe_map, model):
@@ -78,18 +85,22 @@ def expR1(df, cwe_map, model):
     res_after = []
     
     n = len(res10)
-    df['res_before'] = res10[:n//2]
-    df['res_after'] = res10[n//2:]
+    res_df = pd.DataFrame({
+        'id': range(n)
+        'res_before': res10[:n//2],
+        'res_after': res10[n//2:]
+    })
 
-    df.to_csv(f'kat_res/res_R1_{model[0]}.csv', index=False)  
+    res_df.to_csv(f'kat_res/res_R1_{model[0]}.csv', index=False)  
 
+    
 def expR2(df, cwe_map, model):
     prompts_before = [promptR1(df.func_before.iloc[i], cwe_map.get(df['exp_cwe_id'].iloc[i][4:])['name']) for i in range(df.shape[0])]
     prompts_after = [promptR1(df.func_after.iloc[i], cwe_map.get(df['exp_cwe_id'].iloc[i][4:])['name']) for i in range(df.shape[0])]
 
     prompts = prompts_before + prompts_after
 
-    sys = [f"You are a code security expert who analyzes the given code for the security vulnerability known as {cwe_map.get(df['exp_cwe_id'].iloc[i][4:])['name']} following these four steps:\n1. First you describe the overview of the code\n2. Then based on the overview you identify the sub-components in code that could lead to {cwe_map.get(df['exp_cwe_id'].iloc[i][4:])['name']}\n3. After that you do a detailed analysis of the identified sub-components for the existence of the {cwe_map.get(df['exp_cwe_id'].iloc[i][4:])['name']}\n4. Based on the detailed analysis you decide and answer whether the {cwe_map.get(df['exp_cwe_id'].iloc[i][4:])['name']} is present in the given code or not" for i in range(df.shape[0])]
+    sys = [f"You are a code security expert who analyzes the given code for the security vulnerability known as {cwe_map.get(df['exp_cwe_id'].iloc[i//2][4:])['name']} following these four steps:\n1. First you describe the overview of the code\n2. Then based on the overview you identify the sub-components in code that could lead to {cwe_map.get(df['exp_cwe_id'].iloc[i//2][4:])['name']}\n3. After that you do a detailed analysis of the identified sub-components for the existence of the {cwe_map.get(df['exp_cwe_id'].iloc[i//2][4:])['name']}\n4. Based on the detailed analysis you decide and answer whether the {cwe_map.get(df['exp_cwe_id'].iloc[i//2][4:])['name']} is present in the given code or not" for i in range(df.shape[0]*2)]
     
     res10 = inferSystemModelVllm(model[1], prompts, sys)
 
@@ -97,10 +108,13 @@ def expR2(df, cwe_map, model):
     res_after = []
     
     n = len(res10)
-    df['res_before'] = res10[:n//2]
-    df['res_after'] = res10[n//2:]
+    res_df = pd.DataFrame({
+        'id': range(n)
+        'res_before': res10[:n//2],
+        'res_after': res10[n//2:]
+    })
 
-    df.to_csv(f'kat_res/res_R2_{model[0]}.csv', index=False) 
+    res_df.to_csv(f'kat_res/res_R2_{model[0]}.csv', index=False) 
 
 
 def expD1(df, cwe_map, model):
@@ -115,10 +129,13 @@ def expD1(df, cwe_map, model):
     res_after = []
 
     n = len(res10)
-    df['res_before'] = res10[:n//2]
-    df['res_after'] = res10[n//2:]
+    res_df = pd.DataFrame({
+        'id': range(n)
+        'res_before': res10[:n//2],
+        'res_after': res10[n//2:]
+    })
 
-    df.to_csv(f'kat_res/res_D1_{model[0]}.csv', index=False)  
+    res_df.to_csv(f'kat_res/res_D1_{model[0]}.csv', index=False)  
 
 
 def expD2(df, cwe_map, model):
@@ -126,20 +143,22 @@ def expD2(df, cwe_map, model):
     prompts_after = [promptD2(df.func_after.iloc[i], cwe_map.get(df['exp_cwe_id'].iloc[i][4:])['name'], cwe_map.get(df['exp_cwe_id'].iloc[i][4:])['description']) for i in range(df.shape[0])]
 
     prompts = prompts_before + prompts_after
-    
-    res10 = inferSystemModelVllm(model[1], prompts, sys)
 
-    sys = [f"You are a code security expert who analyzes the given code for the security vulnerability known as {cwe_map.get(df['exp_cwe_id'].iloc[i][4:])['name']}.\n\n{cwe_map.get(df['exp_cwe_id'].iloc[i][4:])['description']}" for i in range(df.shape[0])]
+    sys = [f"You are a code security expert who analyzes the given code for the security vulnerability known as {cwe_map.get(df['exp_cwe_id'].iloc[i//2][4:])['name']}.\n\n{cwe_map.get(df['exp_cwe_id'].iloc[i//2][4:])['description']}" for i in range(df.shape[0] * 2)]
+
+    res10 = inferSystemModelVllm(model[1], prompts, sys)
 
     res_before = []
     res_after = []
 
     n = len(res10)
-    df['res_before'] = res10[:n//2]
-    df['res_after'] = res10[n//2:]
+    res_df = pd.DataFrame({
+        'id': range(n)
+        'res_before': res10[:n//2],
+        'res_after': res10[n//2:]
+    })
 
-    df.to_csv(f'kat_res/res_D2_{model[0]}.csv', index=False)
-
+    res_df.to_csv(f'kat_res/res_D2_{model[0]}.csv', index=False)
 
 
 
@@ -169,14 +188,26 @@ def main():
         cwe_map = {item['id']: {'name': item['name'], 'description': item['description']} for item in cwe25}
 
     df = pd.read_csv('vulC7_test.csv')
-        
     
 
     for model in models:
         if experiment_name == 'R1':
             expR1(df, cwe_map, model)
-        if experiment_name == 'S1':
+        elif experiment_name == 'R2':
+            expR2(df, cwe_map, model)
+        
+        elif experiment_name == 'S1':
             expS1(df, cwe_map, model)
+        elif experiment_name == 'S2':
+            expS2(df, cwe_map, model)
+        elif experiment_name == 'S3':
+            expS3(df, cwe_map, model)
+        
+        elif experiment_name == 'D1':
+            expD1(df, cwe_map, model)
+        elif experiment_name == 'D2':
+            expD2(df, cwe_map, model)
+            
             
         print(f"Compmleted model inference for {model[0]}")
 
