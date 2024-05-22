@@ -1,3 +1,6 @@
 .ipynb_checkpoints/
 *.db
+esj_*/
+kat_*/
 assets/
+__pycache__/
