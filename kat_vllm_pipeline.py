@@ -181,6 +181,7 @@ def main():
         # ('gemma', 'google_gemma-7b/'),
         # ('mistral', 'mistralai_Mistral-7B-Instruct-v0.2/'),
         # ('deepSeekCoder', 'deepseek-ai_deepseek-coder-6.7b-instruct/'),
+        # ('artigenz', 'Artigenz_Artigenz-Coder-DS-6.7B/'),
     ]
 
     with open("cwe25.json", 'r') as file:
