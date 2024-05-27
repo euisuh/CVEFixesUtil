@@ -140,6 +140,11 @@ def expD2(df, cwe_map, model):
 
     df.to_csv(f'kat_res/res_D2_{model[0]}.csv', index=False)
 
+def extract_pred(text, df, cwe_map, model):
+    prompt= [f" {text}: As a final decision or answer, does the text state that the code contains a security vulnerability known as {cwe_map.get(df['exp_cwe_id'].iloc[i][4:])['name']}? (Answer yes or no or n/a, incase the text does not provide a definite answer)" for i in range(df.shape[0])]
+    response = inferModelVllm(model, prompt)
+    
+    return response
 
 
 
