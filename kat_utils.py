@@ -101,7 +101,6 @@ def main():
         #data processing function
         extractPred(df)
         
-
         output_file_path = os.path.join(directory_path, f"p_{csv_file}")
         df.to_csv(output_file_path, index=False)
         print(f"Processed and saved: {output_file_path}")
