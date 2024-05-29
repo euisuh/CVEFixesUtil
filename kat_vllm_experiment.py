@@ -8,7 +8,7 @@ from prompts_kat import *
 import pandas as pd
 import torch
 
-def expS1(df, cwe_map, model):
+def expS1(df, cwe_map, model, prefix=""):
     prompts_before = [promptS1(df.func_before.iloc[i], cwe_map.get(df['exp_cwe_id'].iloc[i][4:])['name']) for i in range(df.shape[0])]
     prompts_after = [promptS1(df.func_after.iloc[i], cwe_map.get(df['exp_cwe_id'].iloc[i][4:])['name']) for i in range(df.shape[0])]
 
@@ -26,9 +26,9 @@ def expS1(df, cwe_map, model):
         'res_after': res10[n//2:]
     })
 
-    res_df.to_csv(f'kat_res/res_S1_{model[0]}.csv', index=False)  
+    res_df.to_csv(f'kat_res/{prefix}res_S1_{model[0]}.csv', index=False)  
 
-def expS2(df, cwe_map, model):
+def expS2(df, cwe_map, model, prefix=""):
     prompts_before = [promptS2(df.func_before.iloc[i], cwe_map.get(df['exp_cwe_id'].iloc[i][4:])['name']) for i in range(df.shape[0])]
     prompts_after = [promptS2(df.func_after.iloc[i], cwe_map.get(df['exp_cwe_id'].iloc[i][4:])['name']) for i in range(df.shape[0])]
 
@@ -48,9 +48,9 @@ def expS2(df, cwe_map, model):
         'res_after': res10[n//2:]
     })
     
-    res_df.to_csv(f'kat_res/res_S2_{model[0]}.csv', index=False)  
+    res_df.to_csv(f'kat_res/{prefix}res_S2_{model[0]}.csv', index=False)  
 
-def expS3(df, cwe_map, model):
+def expS3(df, cwe_map, model, prefix=""):
     prompts_before = [promptS3(df.func_before.iloc[i], cwe_map.get(df['exp_cwe_id'].iloc[i][4:])['name']) for i in range(df.shape[0])]
     prompts_after = [promptS3(df.func_after.iloc[i], cwe_map.get(df['exp_cwe_id'].iloc[i][4:])['name']) for i in range(df.shape[0])]
 
@@ -71,10 +71,10 @@ def expS3(df, cwe_map, model):
         'res_after': res10[n//2:]
     })
 
-    res_df.to_csv(f'kat_res/res_S3_{model[0]}.csv', index=False)  
+    res_df.to_csv(f'kat_res/{prefix}res_S3_{model[0]}.csv', index=False)  
 
 
-def expR1(df, cwe_map, model):
+def expR1(df, cwe_map, model, prefix=""):
     prompts_before = [promptR1(df.func_before.iloc[i], cwe_map.get(df['exp_cwe_id'].iloc[i][4:])['name']) for i in range(df.shape[0])]
     prompts_after = [promptR1(df.func_after.iloc[i], cwe_map.get(df['exp_cwe_id'].iloc[i][4:])['name']) for i in range(df.shape[0])]
 
@@ -92,10 +92,10 @@ def expR1(df, cwe_map, model):
         'res_after': res10[n//2:]
     })
 
-    res_df.to_csv(f'kat_res/res_R1_{model[0]}.csv', index=False)  
+    res_df.to_csv(f'kat_res/{prefix}res_R1_{model[0]}.csv', index=False)  
 
     
-def expR2(df, cwe_map, model):
+def expR2(df, cwe_map, model, prefix=""):
     prompts_before = [promptR1(df.func_before.iloc[i], cwe_map.get(df['exp_cwe_id'].iloc[i][4:])['name']) for i in range(df.shape[0])]
     prompts_after = [promptR1(df.func_after.iloc[i], cwe_map.get(df['exp_cwe_id'].iloc[i][4:])['name']) for i in range(df.shape[0])]
 
@@ -115,10 +115,10 @@ def expR2(df, cwe_map, model):
         'res_after': res10[n//2:]
     })
 
-    res_df.to_csv(f'kat_res/res_R2_{model[0]}.csv', index=False) 
+    res_df.to_csv(f'kat_res/{prefix}res_R2_{model[0]}.csv', index=False) 
 
 
-def expD1(df, cwe_map, model):
+def expD1(df, cwe_map, model, prefix=""):
     prompts_before = [promptD1(df.func_before.iloc[i], cwe_map.get(df['exp_cwe_id'].iloc[i][4:])['name'], cwe_map.get(df['exp_cwe_id'].iloc[i][4:])['description']) for i in range(df.shape[0])]
     prompts_after = [promptD1(df.func_after.iloc[i], cwe_map.get(df['exp_cwe_id'].iloc[i][4:])['name'], cwe_map.get(df['exp_cwe_id'].iloc[i][4:])['description']) for i in range(df.shape[0])]
 
@@ -136,10 +136,10 @@ def expD1(df, cwe_map, model):
         'res_after': res10[n//2:]
     })
 
-    res_df.to_csv(f'kat_res/res_D1_{model[0]}.csv', index=False)  
+    res_df.to_csv(f'kat_res/{prefix}res_D1_{model[0]}.csv', index=False)  
 
 
-def expD2(df, cwe_map, model):
+def expD2(df, cwe_map, model, prefix=""):
     prompts_before = [promptD2(df.func_before.iloc[i], cwe_map.get(df['exp_cwe_id'].iloc[i][4:])['name'], cwe_map.get(df['exp_cwe_id'].iloc[i][4:])['description']) for i in range(df.shape[0])]
     prompts_after = [promptD2(df.func_after.iloc[i], cwe_map.get(df['exp_cwe_id'].iloc[i][4:])['name'], cwe_map.get(df['exp_cwe_id'].iloc[i][4:])['description']) for i in range(df.shape[0])]
 
@@ -159,7 +159,7 @@ def expD2(df, cwe_map, model):
         'res_after': res10[n//2:]
     })
 
-    res_df.to_csv(f'kat_res/ahm_res_D2_{model[0]}.csv', index=False)
+    res_df.to_csv(f'kat_res/{prefix}res_D2_{model[0]}.csv', index=False)
 
 
 
@@ -170,6 +170,7 @@ def main():
     parser.add_argument('--experiment-name', dest='experiment_name', type=str, help='Experiment name')
     parser.add_argument('--model', dest='model_name', type=str, help='Model name')
     parser.add_argument('--model-path', dest='model_path', type=str, help='Model path')
+    parser.add_argument('--prefix', dest='prefix', type=str, help='Prefix')
     
     args = parser.parse_args()
 
@@ -185,21 +186,21 @@ def main():
     model = (args.model_name, args.model_path)
 
     if experiment_name == 'R1':
-        expR1(df, cwe_map, model)
+        expR1(df, cwe_map, model, args.prefix)
     elif experiment_name == 'R2':
-        expR2(df, cwe_map, model)
+        expR2(df, cwe_map, model, args.prefix)
     
     elif experiment_name == 'S1':
-        expS1(df, cwe_map, model)
+        expS1(df, cwe_map, model, args.prefix)
     elif experiment_name == 'S2':
-        expS2(df, cwe_map, model)
+        expS2(df, cwe_map, model, args.prefix)
     elif experiment_name == 'S3':
-        expS3(df, cwe_map, model)
+        expS3(df, cwe_map, model, args.prefix)
     
     elif experiment_name == 'D1':
-        expD1(df, cwe_map, model)
+        expD1(df, cwe_map, model, args.prefix)
     elif experiment_name == 'D2':
-        expD2(df, cwe_map, model)
+        expD2(df, cwe_map, model, args.prefix)
         
     print(f"Compmleted model inference for {args.model_name}")
 
