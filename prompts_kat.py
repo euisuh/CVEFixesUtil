@@ -11,7 +11,7 @@ Code:
 Question:
 Does this code contain instances of the security vulnerability known as {cwe_name}?
 
-Answer:
+Answer (Yes | No):
 '''
 # Standard Prompt 2 (ZS) (RO)
 # sys = "You are a helpful assistant."
@@ -23,7 +23,7 @@ Code:
 Question:
 Does this code contain instances of the security vulnerability known as {cwe_name}?
 
-Answer:
+Answer (Yes | No):
 '''
 
 # Standard Prompt 3 (ZS) (RO)
@@ -36,7 +36,7 @@ Code:
 Question:
 Does this code contain instances of the security vulnerability known as {cwe_name}?
 
-Answer:
+Answer (Yes | No):
 '''
 
 # Standard Prompt 4 (ZS) (RO)
