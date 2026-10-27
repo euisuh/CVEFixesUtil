@@ -4,3 +4,5 @@ kat_*/
 assets/
 __pycache__/
 tmp/
+.DS_Store
+.venv/
