@@ -13,29 +13,10 @@ jobs:
 
       # ponytail: pandas + requests only. vllm/torch need a GPU and multi-GB wheels,
       # and every experiment needs assets/CVEfixes.db, which is not in the repo.
-      - run: pip install pandas requests
+      - run: pip install pandas requests pytest ruff
 
-      - name: Compile all sources
-        run: python -m compileall -q .
+      - name: Lint (syntax errors and undefined names)
+        run: ruff check --select E9,F63,F7,F82 *.py tests
 
-      - name: Prompt library renders
-        run: |
-          python -c "
-          from prompts_kat import promptS1, promptR1, promptD1
-          p = promptS1('int f(){}', 'Out-of-bounds Write')
-          assert 'int f(){}' in p and 'Out-of-bounds Write' in p, p
-          assert promptD1('x', 'Use After Free', 'desc').count('desc') == 1
-          assert 'Out-of-bounds Write' in promptR1('int f(){}', 'Out-of-bounds Write')
-          "
-
-      - name: Paired scoring is correct
-        run: |
-          python -c "
-          import pandas as pd
-          from utils import calculate_metrics
-          df = pd.DataFrame({'pred_before': [1, 0, -1], 'pred_after': [1, 0, -1]})
-          assert calculate_metrics(df, 'pred_before', 'pred_after') == (1, 1, 1, 1, 1, 1)
-          "
-
-      - name: Notebooks are valid JSON
-        run: python -c "import json,glob; [json.load(open(f)) for f in glob.glob('*.ipynb')]"
+      - name: Smoke tests
+        run: pytest -q
