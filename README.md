@@ -29,7 +29,7 @@ into TP/FP/TN/FN and derived metrics.
 
 The before/after pair is the point. A detector that answers "yes, vulnerable" to everything scores well on a
 vulnerable-only test set; on paired data it scores TP ≈ FP and its accuracy collapses to ~0.5. The measured results
-in [`kat_experiment.md`](kat_experiment.md) show exactly that failure mode across all four evaluated models — e.g.
+in [`experiments/kat_experiment.md`](experiments/kat_experiment.md) show exactly that failure mode across all four evaluated models — e.g.
 `D1_llama3` reaches 0.988 recall at 0.498 accuracy, and the best configuration overall (`R2_llama3`) still only
 reaches 0.578 accuracy / 0.599 F1. The setup makes prompt-strategy claims falsifiable: same pairs, same decoding,
 only the prompt changes.
@@ -52,7 +52,7 @@ CVEfixes.db (Zenodo)
       ├─ kat_vllm_pipeline.py ──► kat_vllm_experiment.py ──► kat_res/res_<EXP>_<model>.csv
       │        (model loop)          (vLLM batch inference)        │
       │                                                            ▼
-      └─ evaluation1.py ──► re-ask unparsable answers ──► utils.calculate_metrics ──► kat_experiment.md
+      └─ evaluation1.py ──► re-ask unparsable answers ──► utils.calculate_metrics ──► experiments/kat_experiment.md
 ```
 
 `utils.py` is the inference layer: `inferModelVllm` / `inferSystemModelVllm` for offline vLLM batches,
@@ -121,7 +121,7 @@ python kat_vllm_experiment.py \
 # 4. Re-ask the rows whose answers could not be parsed as Yes/No
 python evaluation1.py --cuda-visible-devices 0
 
-# 5. Score -> the tables in kat_experiment.md
+# 5. Score -> the tables in experiments/kat_experiment.md
 ```
 
 Experiment names: `S1`–`S3` (standard), `R1`–`R2` (reasoning), `D1`–`D2` (definition-augmented).
@@ -138,8 +138,8 @@ Experiment names: `S1`–`S3` (standard), `R1`–`R2` (reasoning), `D1`–`D2` (
 | `kat_vllm_pipeline.py` | Loops the runner over a model list |
 | `evaluation1.py` | Second-pass extraction of Yes/No from free-form answers |
 | `utils.py` | vLLM + HTTP inference, chat templating, `calculate_metrics`, `extract_cwe` |
-| `experiment.md` | Prompt templates for the first (`prompt0`–`prompt2`) experiment round |
-| `kat_experiment.md` | Measured results: overall + per-CWE tables, before/after answer extraction |
+| `experiments/experiment.md` | Prompt templates for the first (`prompt0`–`prompt2`) experiment round |
+| `experiments/kat_experiment.md` | Measured results: overall + per-CWE tables, before/after answer extraction |
 
 ## Author role
 
@@ -147,7 +147,7 @@ Repository owner and main contributor ([@euisuh15](https://github.com/euisuh15))
 CVEfixes extraction and pair-construction pipeline (`main.ipynb`), the CWE selection and split logic
 (`analysis.ipynb`), the vLLM inference and templating layer (`utils.py`), the experiment runner
 (`kat_vllm_experiment.py`), the answer-extraction pass (`evaluation1.py`), and the scoring that produced the tables
-in `kat_experiment.md`. The prompt library (`prompts_kat.py`) and parts of the multi-experiment pipeline were
+in `experiments/kat_experiment.md`. The prompt library (`prompts_kat.py`) and parts of the multi-experiment pipeline were
 contributed by [@CathrineShalby](https://github.com/CathrineShalby) and merged via PRs #1 and #3.
 
 The published dataset derived from this pipeline is on Hugging Face:
@@ -222,11 +222,11 @@ C++ pairs were extracted (`CVEFixes_c++.csv`) but were not tabulated per CWE.
   `../text-generation-webui/models/`); there is no packaging, CLI entry point, or config file.
 - **Not reproducible end-to-end from a clean clone.** `assets/` and `kat_res/` are git-ignored, so the split
   (`vulC7_test.csv`), `cwe25.json`, and the raw model outputs are not in the repository — only the aggregated
-  tables in `kat_experiment.md`.
+  tables in `experiments/kat_experiment.md`.
 - **Notebooks are exploratory.** `main.ipynb` and `analysis.ipynb` are linear working notebooks with dead cells
   and intermediate re-assignments; they document how the dataset was built rather than serving as a clean API.
-- **`experiment.md` is a template, not results.** Its tables are placeholder `000` values from an earlier round;
-  the measured numbers live in `kat_experiment.md`.
+- **`experiments/experiment.md` is a template, not results.** Its tables are placeholder `000` values from an earlier round;
+  the measured numbers live in `experiments/kat_experiment.md`.
 - **Detection labels are commit-derived.** A function is "vulnerable" because it precedes a CVE-linked fix commit;
   the fixed version may still contain other, unrelated vulnerabilities, so FP counts are an upper bound on real
   false positives.
