@@ -100,7 +100,7 @@ print(calculate_metrics(df, 'pred_before', 'pred_after'))  # (tp, fp, tn, fn, na
 "
 ```
 
-Both snippets run with only `pandas` installed — no GPU, no database. They are what CI executes on every push.
+Both snippets run with only `pandas` installed — no GPU, no database. The same checks run as `pytest` (`tests/test_smoke.py`) in CI on every push, plus a `ruff` lint for syntax errors and undefined names.
 
 ## Example workflow
 
@@ -236,3 +236,7 @@ C++ pairs were extracted (`CVEFixes_c++.csv`) but were not tabulated per CWE.
   of the original run, kept so the published `S2` numbers stay reproducible.
 - **Evaluated models are 7–8B open weights** (llama3, codeQwen, deepSeekCoder, artigenz) at temperature 0; results
   do not speak to larger or frontier models.
+
+## License
+
+MIT, see [`LICENSE`](LICENSE). The CVEfixes data is distributed separately under its own terms.
